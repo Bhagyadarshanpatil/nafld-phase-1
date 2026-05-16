@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NAFLD - Phase 1 - Initial Assessment</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;}
+    .field{display:flex;flex-direction:column;margin-bottom:8px;}
+    label{font-weight:600;margin-bottom:6px;}
+    .result-box{margin-top:12px;padding:12px;border-radius:8px;background:#fff;box-shadow:0 4px 12px rgba(2,6,23,0.06);}
+    .nav-links{display:flex;gap:8px;margin-bottom:12px;}
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="container-main">
+    <div class="nav-links">
+      <a href="dashboard.html" class="link-btn">← Dashboard</a>
+      <a href="patient-detail.html" class="link-btn">Patient</a>
+    </div>
+
+    <div class="card">
+      <h2>Phase 1 - Initial Assessment</h2>
+      <p class="muted">Enter patient lab values for Phase 1 model. This page will attempt to load a local TensorFlow.js model at /models/phase1/model.json if available, otherwise it can call your server API.</p>
+
+      <form id="phase1-form">
+        <div class="form-grid" id="phase1-fields">
+          <div class="field"><label for="alt">ALT</label><input id="alt" name="alt" type="number" step="any" required></div>
+<div class="field"><label for="ast">AST</label><input id="ast" name="ast" type="number" step="any" required></div>
+<div class="field"><label for="alp">ALP</label><input id="alp" name="alp" type="number" step="any" required></div>
+<div class="field"><label for="totalBilirubin">Total Bilirubin</label><input id="totalBilirubin" name="totalBilirubin" type="number" step="any" required></div>
+<div class="field"><label for="directBilirubin">Direct Bilirubin</label><input id="directBilirubin" name="directBilirubin" type="number" step="any" required></div>
+<div class="field"><label for="albumin">Albumin</label><input id="albumin" name="albumin" type="number" step="any" required></div>
+<div class="field"><label for="totalProtein">Total Protein</label><input id="totalProtein" name="totalProtein" type="number" step="any" required></div>
+<div class="field"><label for="agRatio">A/G Ratio</label><input id="agRatio" name="agRatio" type="number" step="any" required></div>
+        </div>
+
+        <div style="margin-top:12px; display:flex; gap:8px;">
+          <button type="submit" class="btn-primary">Run Phase 1 model</button>
+          <button type="button" id="phase1-predict-api" class="btn-secondary">Use API endpoint</button>
+        </div>
+      </form>
+
+      <div id="phase1-result" class="result-box hidden"></div>
+    </div>
+  </main>
+
+  <script src="components/header.html" type="text/html" id="header-template"></script>
+  <script type="module" src="js/phase1.js"></script>
+</body>
+</html>
